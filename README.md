@@ -1,6 +1,6 @@
-## Big Talk
+# Big Talk
 
-My implementation of [Big Talk](http://www.makebigtalk.com/]) in an form of Android app.
+My implementation of [Big Talk](http://www.makebigtalk.com/) in an form of Android app.
 
 
 ### Two reasons for this project to exist:
