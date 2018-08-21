@@ -12,9 +12,11 @@
         android:id="@+id/number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-thin"
         android:textColor="@color/colorAccent"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:paddingTop="16dp"
         android:textSize="42sp"
         app:layout_constraintBottom_toTopOf="@+id/text"
         app:layout_constraintStart_toStartOf="@+id/text"
@@ -22,19 +24,20 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:paddingBottom="32dp"
+        android:paddingTop="8dp"
         android:fontFamily="sans-serif-thin"
-        android:gravity="center"
+        android:gravity="start"
         android:textColor="@color/colorAccent"
         android:textSize="42sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="wrap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_default="wrap"
-        tools:text="Lorem ipsum dolor sit amet..." />
+        tools:text="Lorem ipsum dolor sit amet... Lorem ipsum dolor sit amet" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

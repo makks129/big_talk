@@ -43,8 +43,7 @@ class AddQuestionDialogFragment: DialogFragment() {
                     if (input.text.isBlank()) {
                         Toast.makeText(activity, R.string.no_question_to_save, LENGTH_SHORT).show()
                     } else {
-                        val question = Question(text = input.text.toString())
-                        addQuestion(question)
+                        addQuestion(Question(text = input.text.toString(), custom = true))
                     }
                 }
                 .setNegativeButton(R.string.cancel, null)

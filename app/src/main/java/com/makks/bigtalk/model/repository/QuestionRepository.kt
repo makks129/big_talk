@@ -42,6 +42,7 @@ class QuestionRepositoryImpl @Inject constructor(
         questionsCache = MutableLiveData()
         questionsCache.value = Resource.Loading()
         val disposable = remote.getQuestionsObservable().toList()
+                .doOnSuccess { it.shuffle() }
                 .doOnSuccess { local.saveQuestions(it) }
                 .onErrorResumeNext { local.getQuestionsObservable().toList() }
                 .doOnSuccess { if (it.isEmpty()) throw RuntimeException() }

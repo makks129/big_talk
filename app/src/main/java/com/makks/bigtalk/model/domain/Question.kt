@@ -10,5 +10,6 @@ import kotlinx.android.parcel.Parcelize
 data class Question(
         @PrimaryKey var id: String = "",
         var number: Int = -1,
-        var text: String = ""
+        var text: String = "",
+        var custom: Boolean = false // custom question added from the app
 ) : Parcelable
