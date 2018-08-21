@@ -2,9 +2,9 @@ package com.makks.bigtalk.view
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -13,9 +13,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.snackbar.Snackbar
 import com.makks.bigtalk.R
-import com.makks.bigtalk.global.extensions.*
+import com.makks.bigtalk.global.extensions.EventResource
+import com.makks.bigtalk.global.extensions.EventResourceObserver
+import com.makks.bigtalk.global.extensions.Resource
+import com.makks.bigtalk.global.extensions.TriStateViewGroups
 import com.makks.bigtalk.view.dialog.AddQuestionDialogFragment
 import com.makks.bigtalk.viewModel.QuestionsViewModel
+import kotlinx.android.synthetic.main.abc_screen_toolbar.*
 
 class QuestionsFragment : Fragment() {
 
@@ -56,6 +60,8 @@ class QuestionsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = ""
+
         viewModel = ViewModelProviders.of(this).get(QuestionsViewModel::class.java)
 
         viewModel.getQuestionsData.observe(this, Observer {
