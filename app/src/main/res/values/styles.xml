@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="AlertDialogTheme" parent="AppTheme">
+        <item name="colorAccent">#000000</item>
+    </style>
+
 </resources>
