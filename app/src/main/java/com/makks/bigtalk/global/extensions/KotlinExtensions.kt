@@ -36,10 +36,6 @@ fun <T> MediatorLiveData<T>.removeAndAddSource(@NonNull source: LiveData<T>, onC
     addSource(source, onChanged)
 }
 
-fun <List, Elem> LiveData<List>.addValue(additional: Elem) {
-    if (value is MutableCollection<*>) (value as MutableCollection<Elem>).add(additional)
-}
-
 // LiveData --- end
 
 // Dialog --- start

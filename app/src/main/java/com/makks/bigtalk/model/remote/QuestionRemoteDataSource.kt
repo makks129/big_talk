@@ -26,9 +26,14 @@ class QuestionRemoteDataSourceImpl @Inject constructor(
                 Tasks.await(firestore.runTransaction {
                     val newQuestionDoc = firestore.questions().document()
                     it.set(newQuestionDoc, question)
-                    val newQuestion = it.get(newQuestionDoc).toObject(Question::class.java)
-                    newQuestion?.id = newQuestionDoc.id
-                    newQuestion
+
+                    // TODO find a way to write and then read new object to Firebase in 1 operation
+                    // temporary solution
+                    question.id = newQuestionDoc.id
+                    question
+//                    val newQuestion = it.get(newQuestionDoc).toObject(Question::class.java)
+//                    newQuestion?.id = newQuestionDoc.id
+//                    newQuestion
                 })
             }.singleOrError()
 

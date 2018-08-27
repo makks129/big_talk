@@ -2,7 +2,10 @@ package com.makks.bigtalk.model.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.makks.bigtalk.global.extensions.*
+import com.makks.bigtalk.global.extensions.EmptyLiveData
+import com.makks.bigtalk.global.extensions.EventResource
+import com.makks.bigtalk.global.extensions.Resource
+import com.makks.bigtalk.global.extensions.isEmpty
 import com.makks.bigtalk.model.domain.Question
 import com.makks.bigtalk.model.local.QuestionLocalDataSource
 import com.makks.bigtalk.model.remote.QuestionRemoteDataSource
@@ -70,9 +73,14 @@ class QuestionRepositoryImpl @Inject constructor(
         responseData.value = EventResource.Loading()
         val disposable = remote.saveQuestionObservable(question)
                 .doOnSuccess { local.saveQuestion(it) }
-                .doOnSuccess { questionsCache.addValue(it) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess {
+                    if (questionsCache.value is Resource.Success) {
+                        val value = questionsCache.value as Resource.Success
+                        questionsCache.value = Resource.Success(value.data + it)
+                    }
+                }
                 .subscribe({ responseData.value = EventResource.Success(it) },
                         { responseData.value = EventResource.Error(it) })
         compositeDisposable.add(disposable)
